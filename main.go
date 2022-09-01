@@ -5,25 +5,16 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/joho/godotenv"
-	"github.com/sjxiang/crud/model"
-	"github.com/sjxiang/crud/controllers/api/v1/user"
 
+	"github.com/sjxiang/crud/conf"
+	"github.com/sjxiang/crud/controllers/api/v1/user"
 )
 
 
-func init() {
-
-	// 从本地读取环境变量 env
-	godotenv.Load()
-
-	// 初始化 MySQL 数据库连接
-	dsn := os.Getenv("MYSQL_DSN")
-	model.SetupDB(dsn)
-}
-
-
 func main() {
+
+	// 从配置文件读取配置
+	conf.Init()
 
 	r := gin.Default()
 

@@ -16,27 +16,6 @@ godotenv
 ```
 
 
-
-```
-2022/09/01
-
-问题 
-1. 主键缺失（不规范）
-2. 表名复数
-
-
-gorm.Model 默认添加
-
-type Model struct {
-    ID        uint      `gorm:"primarykey"`
-    CreatedAt time.Time
-    UpdatedAt time.Time
-    DeletedAt DeletedAt `gorm:"index"`
-}
-
-```
-
-
 ```
 
 参考文档：

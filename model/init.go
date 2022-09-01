@@ -22,7 +22,7 @@ func SetupDB(dsn string) {
 	})
 
 	if err != nil {
-		log.Panic(err)
+		log.Panicf("连接 db 失败：%s\n", err.Error())
 	}
 
 

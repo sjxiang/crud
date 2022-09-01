@@ -185,7 +185,4 @@ func (vc VideoController) BatchShowUser(ctx *gin.Context) {
 			"pageSize": pageSize,
 		},
 	})
-
-
-
 }
