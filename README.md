@@ -38,8 +38,10 @@ type Model struct {
 
 
 ```
+
 参考文档：
 1. https://gin-gonic.com/zh-cn/docs/
 2. https://gorm.io/zh_CN/docs/
+3. https://www.kancloud.cn/shuangdeyu/gin_book
 
 ```
