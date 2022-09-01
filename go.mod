@@ -1,4 +1,4 @@
-module github.com/sjxiang/crud-demo
+module github.com/sjxiang/crud
 
 go 1.17
 

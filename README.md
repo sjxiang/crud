@@ -4,11 +4,14 @@
 
 ```
 
-最基础的 crud 演进
+最简单的 crud demo
 
 gin
 gorm + mysql
 godotenv
+
+
+后续计划补个 JWT
 
 ```
 
@@ -22,16 +25,21 @@ godotenv
 2. 表名复数
 
 
-2022/
+gorm.Model 默认添加
 
+type Model struct {
+    ID        uint      `gorm:"primarykey"`
+    CreatedAt time.Time
+    UpdatedAt time.Time
+    DeletedAt DeletedAt `gorm:"index"`
+}
+
+```
 
 
 ```
-添加 
-POST
-4000/user/add
+参考文档：
+1. https://gin-gonic.com/zh-cn/docs/
+2. https://gorm.io/zh_CN/docs/
 
-
-查询
-GET
-
+```
