@@ -29,7 +29,7 @@ func (uc UserController) Setup(ctx *gin.Context) {
 	
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
-			"Msg": "加密失败",
+			"Msg": "密码加密失败",
 			"Error": err.Error(),
 		})
 

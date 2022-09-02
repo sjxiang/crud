@@ -7,9 +7,10 @@ import (
 
 	base "github.com/sjxiang/crud/app/http/controllers/api/v1"
 	"github.com/sjxiang/crud/app/http/controllers/api/v1/user"
-	middleware "github.com/sjxiang/crud/app/http/middlewares"
+	"github.com/sjxiang/crud/app/http/middlewares"
 	"github.com/sjxiang/crud/conf"
 )
+
 
 
 func main() {
@@ -38,15 +39,15 @@ func main() {
 		// 查（分页、批量）
 		v1.GET("/user/list", uc.BatchShowUser)
 
-		// 注册
+	
+		// 用户注册
 		v1.POST("/user/signup", uc.Setup)
 
-		// 登录
+		// 用户登录
 		v1.POST("/user/login", uc.Login)
 
-		// 在线检查
-		v1.GET("/user/validate", middleware.RequireAuth, uc.Validate)
-
+		// 身份验证
+		v1.GET("/user/validate", middlewares.RequireAuth, uc.Validate)
 
 	}
 

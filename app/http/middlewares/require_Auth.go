@@ -1,4 +1,4 @@
-package middleware
+package middlewares
 
 import (
 	"fmt"
@@ -51,7 +51,7 @@ func RequireAuth(ctx *gin.Context) {
 
 		// 附加到 req
 		ctx.Set("user", user)
-		
+
 		ctx.Next()
 
 	} else {
