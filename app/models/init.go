@@ -11,11 +11,11 @@ import (
 
 var DB *gorm.DB
 
-
 // 初始化 MySQL 连接
 func SetupDB(dsn string) {
 
-	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{
+	var err error
+	DB, err = gorm.Open(mysql.Open(dsn), &gorm.Config{
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true, // 解决表名复数，user
 		  },
@@ -27,7 +27,7 @@ func SetupDB(dsn string) {
 
 
 	// 获取通用数据库对象 sql.DB ，然后使用其提供的功能
-	sqlDB, err := db.DB()
+	sqlDB, err := DB.DB()
 	if err != nil {
 		log.Panic(err)
 	}
@@ -42,8 +42,6 @@ func SetupDB(dsn string) {
 
 	// SetConnMaxLifetime 设置了连接可复用的最大时间。
 	sqlDB.SetConnMaxLifetime(10 * time.Second)
-
-	DB = db
 
 	migration()
 }

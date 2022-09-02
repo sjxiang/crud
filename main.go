@@ -5,9 +5,10 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/sjxiang/crud/conf"
 	base "github.com/sjxiang/crud/app/http/controllers/api/v1"
 	"github.com/sjxiang/crud/app/http/controllers/api/v1/user"
+	middleware "github.com/sjxiang/crud/app/http/middlewares"
+	"github.com/sjxiang/crud/conf"
 )
 
 
@@ -41,6 +42,11 @@ func main() {
 		v1.POST("/user/signup", uc.Setup)
 
 		// 登录
+		v1.POST("/user/login", uc.Login)
+
+		// 在线检查
+		v1.GET("/user/validate", middleware.RequireAuth, uc.Validate)
+
 
 	}
 
