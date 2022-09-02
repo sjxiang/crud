@@ -3,9 +3,10 @@ package user
 import (
 	"net/http"
 
-	"github.com/gin-gonic/gin"
-	"github.com/sjxiang/crud/models"
 	"golang.org/x/crypto/bcrypt"
+	"github.com/gin-gonic/gin"
+
+	"github.com/sjxiang/crud/app/models"
 )
 
 // 注册

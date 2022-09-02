@@ -3,17 +3,18 @@ package user
 import (
 	"net/http"
 	"strconv"
+
 	"github.com/gin-gonic/gin"
 
 
-	"github.com/sjxiang/crud/controllers"
-	"github.com/sjxiang/crud/models"
+	"github.com/sjxiang/crud/app/http/controllers/api/v1"
+	"github.com/sjxiang/crud/app/models"
 
 )
 
 
 type UserController struct {
-	controllers.BaseController
+	v1.BaseController
 }
 
 

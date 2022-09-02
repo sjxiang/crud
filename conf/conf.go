@@ -7,7 +7,7 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"github.com/sjxiang/crud/models"
+	"github.com/sjxiang/crud/app/models"
 )
 
 
@@ -21,9 +21,8 @@ func Init() {
 	}
 
 	// 连接 MySQL 数据库
-	dsn := os.Getenv("MYSQL_DSN")
-	models.SetupDB(dsn)
+	models.SetupDB(os.Getenv("MYSQL_DSN"))
 
-
+    // 连接 Redis 
 
 }

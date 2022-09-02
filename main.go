@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/sjxiang/crud/conf"
-	base "github.com/sjxiang/crud/controllers"
-	"github.com/sjxiang/crud/controllers/api/v1/user"
+	base "github.com/sjxiang/crud/app/http/controllers/api/v1"
+	"github.com/sjxiang/crud/app/http/controllers/api/v1/user"
 )
 
 
@@ -39,7 +39,7 @@ func main() {
 
 		// 注册
 		v1.POST("/user/signup", uc.Setup)
-		
+
 		// 登录
 
 	}
