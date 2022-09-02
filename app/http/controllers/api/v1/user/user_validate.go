@@ -10,10 +10,9 @@ import (
 
 func (uc UserController) Validate(ctx *gin.Context) {
 	user, _ := ctx.Get("user")
-	
-	username := user.(models.User).NickName
+	nickname := user.(models.User).NickName
 
 	ctx.JSON(http.StatusOK, gin.H{
-		"Msg": fmt.Sprintf("%v 在线", username),
+		"Msg": fmt.Sprintf("%v 在线", nickname),
 	})
 }

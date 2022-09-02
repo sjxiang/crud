@@ -3,18 +3,18 @@ package user
 import (
 	"net/http"
 
-	"golang.org/x/crypto/bcrypt"
 	"github.com/gin-gonic/gin"
+	"golang.org/x/crypto/bcrypt"
 
 	"github.com/sjxiang/crud/app/models"
+	"github.com/sjxiang/crud/app/requests"
 )
 
 // 注册
 func (uc UserController) Setup(ctx *gin.Context) {
-	
-	var user models.User
+	var request requests.UserSetupRequest
 
-	if err := ctx.ShouldBindJSON(&user); err != nil {
+	if err := ctx.ShouldBindJSON(&request); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"Msg": "请求解析错误，请确认格式是否正确。上传文件请使用 multipart 标头，参数请使用 JSON 格式。",
 			"Error": err.Error(),
@@ -25,7 +25,7 @@ func (uc UserController) Setup(ctx *gin.Context) {
 	
 
 	// 加密（第二个参数是 cost 值，建议大于 12，数值越大耗费时间越长）
-	hash, err := bcrypt.GenerateFromPassword([]byte(user.Password), 12)
+	hash, err := bcrypt.GenerateFromPassword([]byte(request.Password), 12)
 	
 	if err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
@@ -36,7 +36,12 @@ func (uc UserController) Setup(ctx *gin.Context) {
 		return
 	}
 
-	user.Password = string(hash)
+	user := models.User{
+		NickName: request.NickName,
+		Password: string(hash),
+		Email: request.Email,
+		Phone: request.Phone,
+	}
 	result := models.DB.Create(&user)
 
 	if result.Error != nil {
@@ -52,25 +57,4 @@ func (uc UserController) Setup(ctx *gin.Context) {
 		"Msg": "注册成功",
 		"Data": user,
 	})
-
-
-
-
-
-
 }
-
-
-
-// var body struct {
-// 	Email    string
-// 	Password string
-// }
-
-// if c.Bind(&body) != nil {
-// 	c.JSON(http.StatusBadRequest, gin.H{
-// 		"Error": "读取 body 失败",
-// 	})
-
-// 	return
-// }

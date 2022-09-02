@@ -9,12 +9,12 @@
 gin
 gorm + mysql
 godotenv
+golang-jwt
 
 
-后续计划补个 JWT 
+
 govalidator 校验参数
-go-redis/v8 点击数
-golang-jwt 
+go-redis/v8 点击数 
 aliyun-oss-go-sdk/oss 存图片
 
 韩国女团 KPOP 视频投稿、视频点击数、百万直拍排行榜 
